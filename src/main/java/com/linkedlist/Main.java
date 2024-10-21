@@ -6,124 +6,89 @@ class FoodNode{
     public FoodNode(String foodName) {
         this.foodName = foodName;
         }
+
+class GroceryLinkedList{
+    FoodNode head;
+    //Functions
+    String getFoodName(){ //Returns foodName. Useless.
+        return foodName;
     }
 
-public void GroceryLinkedList(){
-    FoodNode head;
-    
+    public void setFoodName(String name){ //Sets foodName. Useless.
+        foodName = name;
+    }
 
-    public void append(String food){
+    FoodNode getNextFood(){ //Returns next Food. Useless.
+        return nextFood;
+    }
+    public void setNextFood(FoodNode nxt){ //Sets next Food. Useless.
+        nextFood = nxt;
+    }
+    void print(){ //Goes through and prints the list
+        System.out.println(head.foodName);
+        if (head.foodName != null){
+            head = head.nextFood;
+        } 
+    }
+    
+    public void append(String food){ //Inserts a node at the end of the linked list.
         if (head == null){
             head = new FoodNode(food);
             return;
         }
         FoodNode current = head;
-        while (current.next != null){
-            current = current.next();
+        while (current.nextFood != null){
+            current = current.nextFood;
         }
-        current.getNextFood() = new FoodNode(food);
+        current.nextFood = new FoodNode(food);
     }
 
-    public void prepend(String name){
+    public void prepend(String name){ //Inserts a node at the beginning of the linked list.
         FoodNode newHead = new FoodNode(name);
-        newHead.next = head;
+        newHead.nextFood = head;
         head = newHead;
+    }
+
+    void insert(String name, FoodNode node){ //Inserts a node in a desired location in a linked list.
+        if (head.foodName == name){
+            head = node;
+        }
+    }
+
+    void remove (String food){ //Removes a node
+        head = null;   
+    }
+        boolean isEmpty(){
+        if (getFoodName() == null){
+        return true;
+    }
+        else{
+            return false;
+        }
     }
 
     public void deleteWithValue(String name){
         if(head == null) return;
-        if(head.foodName = foodName){
-            head = head.next;
+        if(head.foodName == name){
+            head = head.nextFood;
             return;
         }
+        
+
 
         FoodNode current = head;
-        while (current.next != null) {
-            if(current.next.FoodName == name){
-                current.next(current.next.next);
+        while (current.nextFood != null) {
+            if(current.nextFood.foodName == name){
+                current.nextFood = current.nextFood.nextFood;
                 return;
             }
-            current = current.next;
+            current = current.nextFood;
         }
     }
 }
-    // FoodNode current = head;
-    // while (current.next != null){
-    //     if (current.next.name == name){
-    //         current.next = current.next.next;
-    //         return;
-    //     }
-    //     current = current.next;
-    // }
-    
-    //     String getFoodName(){
-    //         return foodName;
-    //     }
-    //     public void setFoodName(String name){
-    //         foodName = name;
-    //     }
-    // FoodNode getNextFood(){
-    //     return nextFood;
-    // }
-    // public void setNextFood(FoodNode nxt){
-    //     nextFood = nxt;
-    // }
-//         FoodNode current = head;
+}
+public class Main{
+    public static void main(String[] args) {
+    }
+}
 
-//         current.next = new FoodNode(nxt);
-//     }
-// }
-
-
-
-//     }
-//     //Goes through the linked list printing everything
-// void print(){
-//     curFoodNode = this.FoodNode;
-//     system.out.println(curFoodNode.getFoodName());
-//     if (curFoodNode.getNextFood != null){
-//         this.FoodNode = curFoodNode.getNextFood();
-//     }
-// }
-// //---------------------------------------------------------------------------------------
-// //Inserts a node. I'll come back to this
-//     void insert(int index, FoodNode node){
-        
-//     }
-// //---------------------------------------------------------------------------------------
-//     //Also see inset at start and end.
-//     boolean isEmpty(){
-//         if (getFoodName == null){
-//         return true;
-//     }
-//         else{
-//             return false;
-//         }
-
-//     }
-// //---------------------------------------------------------------------------------------
-// //Search function needs work
-//     int Find(string food){
-//         if (food == getFoodName()){
-//             return index;
-//         }\
-//     }
-// //---------------------------------------------------------------------------------------
-//     void remove (String food){
-//         //idk
-//     }
-// //---------------------------------------------------------------------------------------
-//     public class LinkedList{
-//         Node head;
-//     }
-
-// }
-
-
-// public class LinkedListAssig {
-//     public static void main(String[] args) {
-        
-//     }
-
-// }
- 
