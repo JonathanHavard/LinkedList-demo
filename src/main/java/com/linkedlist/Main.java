@@ -42,6 +42,7 @@ class GroceryLinkedList{
         head = OrigHead;
         
     }
+    //No clue why, but I have to make it void or else it has weird syntax errors.
     void find(String food){
         FoodNode OrigHead = head;
         for (int i=0; i<1000; i++){
@@ -51,7 +52,7 @@ class GroceryLinkedList{
             else {
                 // return head.index;
                 i = 1000;
-                System.out.println(head.index+1);
+                System.out.println(head.index);
                 
         }
     }
@@ -125,8 +126,7 @@ public class Main{
 
         GroceryLinkedList list = new GroceryLinkedList();
         // Test 1
-        System.out.println("");
-        System.out.println("Test 1");
+        System.out.println("");        System.out.println("Test 1");
         list.append("milk");
         list.append("bananas");
         list.append("ice cream");
