@@ -2,8 +2,10 @@ package com.linkedlist;
 
 
 class FoodNode{
+
     FoodNode nextFood;
     String foodName;
+    int index;
     FoodNode(String foodName) {
         this.foodName = foodName;
     }
@@ -16,35 +18,52 @@ class FoodNode{
         foodName = name;
     }
     
-    public static String getNextFood(){ //Returns next Food. Useless.
+    FoodNode getNextFood(){ //Returns next Food. Useless.
         return nextFood;
     }
     
-    public static void setNextFood(FoodNode nxt){ //Sets next Food. Useless.
+    public void setNextFood(FoodNode nxt){ //Sets next Food. Useless.
         nextFood = nxt;
     }
 }
 
 class GroceryLinkedList{
-    int index = 0;
+    int indexPointer = 0;
     FoodNode head;
     //Functions
 
     void print(){ //Goes through and prints the list
-        System.out.println(head.foodName);
-        if (head.foodName != null){
+        FoodNode OrigHead = head;
+        if (head != null){
+            System.out.println(head.foodName);
             head = head.nextFood;
+            print();
         } 
+        head = OrigHead;
+        
     }
+    void find(String food){
+        FoodNode OrigHead = head;
+        for (int i=0; i<1000; i++){
+            if (head.foodName != food){
+                head = head.nextFood;
+            }
+            else {
+                // return head.index;
+                i = 1000;
+                System.out.println(head.index+1);
+                
+        }
+    }
+    head = OrigHead;
+}
+
     
     public void append(String food){ //Inserts a node at the end of the linked list.
-        if (index>0){
-            FoodNode.setNextFood = food;
-        }
-
         if (head == null){
             head = new FoodNode(food);
-            index++;
+            indexPointer++;
+            head.index = indexPointer;
             return;
         }
         FoodNode current = head;
@@ -56,8 +75,23 @@ class GroceryLinkedList{
 
     public void prepend(String name){ //Inserts a node at the beginning of the linked list.
         FoodNode newHead = new FoodNode(name);
+        indexPointer = 1;
+        FoodNode OrigHead = newHead;
         newHead.nextFood = head;
         head = newHead;
+        //Resets the indeces
+        for (int i=0; i<1000; i++){
+        if (head != null){
+            indexPointer++;
+            head.index = indexPointer;
+            head = head.nextFood;
+        }
+        else {
+
+            i = 1000;
+            head = OrigHead;
+        }
+    }
     }
 
     void insert(String name, FoodNode node){ //Inserts a node in a desired location in a linked list.
@@ -67,6 +101,7 @@ class GroceryLinkedList{
     }
 
     public void remove(String name){
+        FoodNode OrigHead = head;
         if(head == null) return;
         if(head.foodName == name){
             head = head.nextFood;
@@ -81,6 +116,7 @@ class GroceryLinkedList{
             }
             current = current.nextFood;
         }
+        head = OrigHead;
     }
 }
 
@@ -89,6 +125,7 @@ public class Main{
 
         GroceryLinkedList list = new GroceryLinkedList();
         // Test 1
+        System.out.println("");
         System.out.println("Test 1");
         list.append("milk");
         list.append("bananas");
@@ -97,14 +134,30 @@ public class Main{
         list.append("chicken");
         list.print();
         // Test 2
+        System.out.println("");
         System.out.println("Test 2");
         list.remove("ice cream");
         list.print();
         // Test 3
+        System.out.println("");
         System.out.println("Test 3");
         list.remove("chicken");
         list.print();
+        // Test 4
+        System.out.println("");
+        System.out.println("Test 4");
+        System.out.print("Spinach is at: ");
+        list.find("spinach");
+        list.print();
+        //Test 5
+        System.out.println("");
+        System.out.println("Test 5");
+        list.append("eggs");
+        System.out.print("eggs are at: ");
+        list.find("eggs");
+        list.print();
         // Test 6
+        System.out.println("");
         System.out.println("Test 6");
         list.prepend("onions");
         list.print();
